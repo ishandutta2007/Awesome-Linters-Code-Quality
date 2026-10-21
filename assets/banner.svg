@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0d1527" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#818cf8" />
+      <stop offset="80%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+
+    <linearGradient id="accent-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <linearGradient id="scan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" stroke-opacity="0.6"/>
+    </pattern>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      @keyframes scanBeam {
+        0% { transform: translateY(-50px); opacity: 0.2; }
+        50% { opacity: 0.7; }
+        100% { transform: translateY(420px); opacity: 0.2; }
+      }
+      @keyframes pulseOrb {
+        0%, 100% { transform: scale(1); opacity: 0.25; }
+        50% { transform: scale(1.15); opacity: 0.45; }
+      }
+      @keyframes floatChip {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+      @keyframes floatChipAlt {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(6px); }
+      }
+      .scanner {
+        animation: scanBeam 6s ease-in-out infinite alternate;
+      }
+      .orb-1 {
+        animation: pulseOrb 8s ease-in-out infinite;
+        transform-origin: 200px 100px;
+      }
+      .orb-2 {
+        animation: pulseOrb 10s ease-in-out infinite reverse;
+        transform-origin: 1000px 300px;
+      }
+      .chip-float-1 {
+        animation: floatChip 4s ease-in-out infinite;
+      }
+      .chip-float-2 {
+        animation: floatChipAlt 4.5s ease-in-out infinite;
+      }
+      .chip-float-3 {
+        animation: floatChip 5s ease-in-out infinite 0.5s;
+      }
+      .chip-float-4 {
+        animation: floatChipAlt 4.8s ease-in-out infinite 0.8s;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-grad)" rx="16"/>
+  <rect width="1200" height="400" fill="url(#grid)" rx="16"/>
+
+  <!-- Ambient Light Orbs -->
+  <circle class="orb-1" cx="220" cy="120" r="140" fill="#38bdf8" filter="url(#glow)"/>
+  <circle class="orb-2" cx="980" cy="280" r="160" fill="#818cf8" filter="url(#glow)"/>
+  <circle cx="600" cy="200" r="180" fill="#a855f7" opacity="0.12" filter="url(#glow)"/>
+
+  <!-- Scanning laser line in background -->
+  <g class="scanner">
+    <rect x="0" y="0" width="1200" height="2" fill="url(#scan-grad)"/>
+    <rect x="100" y="2" width="1000" height="15" fill="url(#scan-grad)" opacity="0.15"/>
+  </g>
+
+  <!-- Modern Tech Frame Border -->
+  <rect x="2" y="2" width="1196" height="396" fill="none" stroke="#334155" stroke-width="1.5" rx="15" opacity="0.7"/>
+  <rect x="8" y="8" width="1184" height="384" fill="none" stroke="#1e293b" stroke-width="1" rx="12" opacity="0.8"/>
+
+  <!-- Corner Brackets -->
+  <path d="M 30 50 L 30 30 L 50 30" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 1170 50 L 1170 30 L 1150 30" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 30 350 L 30 370 L 50 370" fill="none" stroke="#818cf8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 1170 350 L 1170 370 L 1150 370" fill="none" stroke="#818cf8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Code Check / Linter Graphic Marks -->
+  <g opacity="0.25">
+    <text x="60" y="110" font-family="'JetBrains Mono', monospace" font-size="14" fill="#38bdf8">✓ AST Parser: OK</text>
+    <text x="60" y="140" font-family="'JetBrains Mono', monospace" font-size="14" fill="#34d399">✓ SAST Taint Analysis: Clean</text>
+    <text x="60" y="170" font-family="'JetBrains Mono', monospace" font-size="14" fill="#818cf8">✓ 0 Errors | 0 Code Smells</text>
+    <text x="960" y="110" font-family="'JetBrains Mono', monospace" font-size="14" fill="#c084fc">Coverage: 100%</text>
+    <text x="960" y="140" font-family="'JetBrains Mono', monospace" font-size="14" fill="#34d399">Type Check: Strict</text>
+    <text x="960" y="170" font-family="'JetBrains Mono', monospace" font-size="14" fill="#38bdf8">Security Gate: Passed</text>
+  </g>
+
+  <!-- Foreground Title and Content (Clear, High Contrast, Always on Top) -->
+  <g text-anchor="middle" id="foreground-content">
+    <!-- Top Micro Tag -->
+    <rect x="460" y="55" width="280" height="28" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2" opacity="0.9"/>
+    <text x="600" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#60a5fa" letter-spacing="2">DEVELOPER TOOLING ECOSYSTEM</text>
+
+    <!-- Main Title -->
+    <text x="600" y="160" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="900" fill="url(#text-grad)" letter-spacing="-0.5">
+      Awesome Linters &amp; Code Quality
+    </text>
+
+    <!-- Subtitle -->
+    <text x="600" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#94a3b8" letter-spacing="0.2">
+      Curated Index of Static Analysis, SAST, Linters, Security Scanners &amp; Code Health Automation
+    </text>
+
+    <!-- Floating Feature Badges / Chips -->
+    <g transform="translate(0, 270)">
+      <!-- Chip 1 -->
+      <g class="chip-float-1" transform="translate(220, 0)">
+        <rect x="-85" y="0" width="170" height="38" rx="19" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.5"/>
+        <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#38bdf8">🔍 Static Analysis</text>
+      </g>
+
+      <!-- Chip 2 -->
+      <g class="chip-float-2" transform="translate(430, 0)">
+        <rect x="-80" y="0" width="160" height="38" rx="19" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+        <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#34d399">🛡️ SAST Security</text>
+      </g>
+
+      <!-- Chip 3 -->
+      <g class="chip-float-3" transform="translate(640, 0)">
+        <rect x="-85" y="0" width="170" height="38" rx="19" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#a78bfa">⚡ Multi-Language</text>
+      </g>
+
+      <!-- Chip 4 -->
+      <g class="chip-float-4" transform="translate(860, 0)">
+        <rect x="-85" y="0" width="170" height="38" rx="19" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#fbbf24">✨ Zero Debt CI/CD</text>
+      </g>
+    </g>
+
+    <!-- Bottom Tech Tags -->
+    <text x="600" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#64748b">
+      JavaScript • TypeScript • Python • Go • Rust • Java • C/C++ • Ruby • PHP • IaC
+    </text>
+  </g>
+</svg>
